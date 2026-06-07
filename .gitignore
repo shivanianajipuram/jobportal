@@ -24,3 +24,8 @@ Thumbs.db
 
 # Vite cache
 .vite
+
+node_modules
+.env
+dist
+build
