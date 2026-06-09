@@ -1,31 +1,39 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import BASE_URL from "../config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loginUser } = useAuth();
 
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const res = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      alert(data.message);
-      return;
+      if (!res.ok) {
+        alert(data.message);
+        return;
+      }
+
+      localStorage.setItem("email", data.user.email);
+      loginUser(data.user);
+
+      alert("Login success");
+
+    } catch (err) {
+      alert("Server error");
     }
-
-    localStorage.setItem("email", data.user.email);
-    loginUser(data.user);
-
-    alert("Login success");
   };
 
   return (
