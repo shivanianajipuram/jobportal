@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 const MyJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [searchText, setSearchText] = useState("");

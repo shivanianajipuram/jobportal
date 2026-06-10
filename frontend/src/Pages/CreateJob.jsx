@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const skillsList = ["C++", "Java", "Python", "React", "Node.js", "MongoDB"];
 
