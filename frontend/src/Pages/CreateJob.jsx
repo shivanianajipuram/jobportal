@@ -29,7 +29,7 @@ const CreateJob = () => {
       createdBy: email,
     };
 
-    const res = await fetch("http://localhost:5000/post-job", {
+    const res = await fetch(`${BASE_URL}post-job`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(jobData),

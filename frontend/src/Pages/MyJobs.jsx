@@ -21,7 +21,7 @@ useEffect(() => {
 
   setIsLoading(true);
 
-  fetch(`http://localhost:5000/my-jobs/${email}`)
+  fetch(`${BASE_URL}/my-jobs/${email}`)
     .then((res) => res.json())
     .then((data) => {
       console.log("MY JOBS DATA:", data); // DEBUG
@@ -64,7 +64,7 @@ useEffect(() => {
 
   // ✔ DELETE JOB
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/job/${id}`, {
+    await fetch(`${BASE_URL}/job/${id}`, {
       method: "DELETE",
     });
 

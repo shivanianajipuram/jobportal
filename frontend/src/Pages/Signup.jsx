@@ -1,5 +1,7 @@
 import { useState } from "react";
-import BASE_URL from "../config";
+//import BASE_URL from "../config";
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
